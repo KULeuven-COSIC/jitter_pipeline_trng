@@ -176,3 +176,15 @@ The following hierarchy is used in the ASIC (each cell can be expanded to show i
         </details>
     </blockquote>
 </details>
+
+## Make Usage
+
+Use the provided *makefile* to generate the layout figures and netlists.
+The following make targets are available:
+- `hw_svg`: Generate all SVGs, the corresponding GDS files are required (not provided in the public archive).
+- `hw_png`: Generate all PNGs from the SVG files.
+- `hw_cir`: Generate all netlists, the corresponding raw netlists are required (not provided in the public archive).
+- `hw_md`: Generate all readmes, the corresponding PNG files are required.
+- `clean_hw`: Remove all PNGs and readmes.
+- `realclean_hw`: `clean_hw`and remove netlists.
+- `mrproper_hw`: `realclean_hw` and remove SVGs, note that regenerating the SVGs might take a long time!
