@@ -1,5 +1,7 @@
 *.gds
+*.rcir
 .mypy_cache
 .DS_Store
 .vscode
 __pycache__/
+lib/*.json

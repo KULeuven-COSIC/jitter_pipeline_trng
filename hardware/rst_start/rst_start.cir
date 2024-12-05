@@ -1,0 +1,116 @@
+* Top cell name: rst_start
+
+.SUBCKT nand2 in0 in1 out vdd vss
+    Mm1 net9 in1 vss vss n_mos l=30n w=200n m=1 nf=1
+    Mm0 out in0 net9 vss n_mos l=30n w=200n m=1 nf=1
+    Mm3 out in1 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 out in0 vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT inv in out vdd vss
+    Mm0 out in vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm1 out in vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT mux2 in0 in1 out sel vdd vss
+    Xi2 in0 net7 net9 vdd vss nand2
+    Xi1 in1 sel net10 vdd vss nand2
+    Xi0 net10 net9 out vdd vss nand2
+    Xi3 sel net7 vdd vss inv
+.ENDS
+
+.SUBCKT nor5 in0 in1 in2 in3 in4 out vdd vss
+    Mm4 out in4 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm3 out in0 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm2 out in1 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm1 out in3 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm0 out in2 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm9 net12 in4 vdd vdd p_mos l=30n w=400n m=1 nf=1
+    Mm8 net13 in3 net12 vdd p_mos l=30n w=400n m=1 nf=1
+    Mm7 net14 in2 net13 vdd p_mos l=30n w=400n m=1 nf=1
+    Mm6 net15 in1 net14 vdd p_mos l=30n w=400n m=1 nf=1
+    Mm5 out in0 net15 vdd p_mos l=30n w=400n m=1 nf=1
+.ENDS
+
+.SUBCKT nor2 in0 in1 out vdd vss
+    Mm1 out in1 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm0 out in0 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm3 net5 in1 vdd vdd p_mos l=30n w=200n m=1 nf=1
+    Mm2 out in0 net5 vdd p_mos l=30n w=200n m=1 nf=1
+.ENDS
+
+.SUBCKT nand2_wide in0 in1 out vdd vss
+    Mm1 net9 in1 vss vss n_mos l=30n w=400n m=2 nf=1
+    Mm0 out in0 net9 vss n_mos l=30n w=400n m=2 nf=1
+    Mm3 out in1 vdd vdd p_mos l=30n w=400n m=1 nf=1
+    Mm2 out in0 vdd vdd p_mos l=30n w=400n m=1 nf=1
+.ENDS
+
+.SUBCKT nor2_wide in0 in1 out vdd vss
+    Mm1 out in1 vss vss n_mos l=30n w=400n m=1 nf=1
+    Mm0 out in0 vss vss n_mos l=30n w=400n m=1 nf=1
+    Mm3 net5 in1 vdd vdd p_mos l=30n w=400n m=2 nf=1
+    Mm2 out in0 net5 vdd p_mos l=30n w=400n m=2 nf=1
+.ENDS
+
+.SUBCKT nand3_r in0 in1 in2 out rst vdd vss
+    Mm3 out rst vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm2 net6 in2 vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm1 net7 in1 net6 vss n_mos l=30n w=300n m=1 nf=1
+    Mm0 out in0 net7 vss n_mos l=30n w=300n m=1 nf=1
+    Mm7 net21 rst vdd vdd p_mos l=30n w=200n m=1 nf=1
+    Mm6 out in2 net21 vdd p_mos l=30n w=200n m=1 nf=1
+    Mm5 out in1 net21 vdd p_mos l=30n w=200n m=1 nf=1
+    Mm4 out in0 net21 vdd p_mos l=30n w=200n m=1 nf=1
+.ENDS
+
+.SUBCKT nand3 in0 in1 in2 out vdd vss
+    Mm4 net016 in2 vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm1 net3 in1 net016 vss n_mos l=30n w=300n m=1 nf=1
+    Mm0 out in0 net3 vss n_mos l=30n w=300n m=1 nf=1
+    Mm5 out in2 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm3 out in1 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 out in0 vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT inv_dh in out vdd vss
+    Mm0 out in vss vss n_mos l=30n w=200n m=1 nf=1
+    Mm1 out in vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT dff_st_ar_dh clk q q' rst rst' vdd vss
+    Xi5 q n1 q' vdd vss nand2
+    Xi4 n0 q' q vdd vss nand2
+    Xi2 n3 n0 n2 vdd vss nand2
+    Xi6 clk n0 n3 n1 rst vdd vss nand3_r
+    Xi7 clk n2 rst' n0 vdd vss nand3
+    Xi8 n1 n3 vdd vss inv_dh
+.ENDS
+
+.SUBCKT rst_start conf_fb dc_rst_0 dc_rst_1 edge_0 edge_1 rst rst' rst_glob rst_glob' start_glob start_loc vdd vss
+    Xi61 start_glob start_loc_int start_loc conf_fb vdd vss mux2
+    Xi55 start_glob_level q_2' start_mux start_sel vdd vss mux2
+    Xi48 rst_glob' ar_2_loc' ar_2 vdd vss nand2
+    Xi47 rst_glob' ar_1_loc' ar_1 vdd vss nand2
+    Xi40 q_1 q_2' rst_loc' vdd vss nand2
+    Xi38 edge_0 edge_1 nand vdd vss nand2
+    Xi45 q_1' q_2 ar_2_loc' vdd vss nand2
+    Xi44 q_1 q_2 ar_1_loc' vdd vss nand2
+    Xi63 edge_0 edge_1 dc_rst_0 dc_rst_1 q_1' nor vdd vss nor5
+    Xi57 net038 net032 vdd vss inv
+    Xi56 net031 net038 vdd vss inv
+    Xi37 nand and vdd vss inv
+    Xi50 rst_glob ar_2_loc ar_2' vdd vss nor2
+    Xi49 rst_glob ar_1_loc ar_1' vdd vss nor2
+    Xi43 q_1 q_2' ar_2_loc vdd vss nor2
+    Xi42 q_1' q_2' ar_1_loc vdd vss nor2
+    Xi41 q_1' q_2 rst_loc vdd vss nor2
+    Xi59 rst_glob' rst_loc' rst vdd vss nand2_wide
+    Xi60 rst_glob rst_loc rst' vdd vss nor2_wide
+    Xi58 net032 start_loc_int net039 rst rst' vdd vss dff_st_ar_dh
+    Xi53 start_glob start_glob_level net040 rst_glob rst_glob' vdd vss dff_st_ar_dh
+    Xi54 start_loc_int start_sel net034 rst_glob rst_glob' vdd vss dff_st_ar_dh
+    Xi36 nor q_2 q_2' ar_2 ar_2' vdd vss dff_st_ar_dh
+    Xi46 start_mux net031 net023 rst rst' vdd vss dff_st_ar_dh
+    Xi35 and q_1 q_1' ar_1 ar_1' vdd vss dff_st_ar_dh
+.ENDS

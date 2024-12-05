@@ -3,11 +3,20 @@
 This folder contains all the cells used to build the ASIC.
 Each cell contains an SVG showing the layout and a netlist.
 
+## File Structure
+
+Each folder corresponds to a hardware module (cell).
+Each folder contains the following files:
+- *[module name].cir*: A netlist for this module.
+- *[module name].svg*: The layout for this module.
+- *[module name].png*: A compressed version of the layout for this module.
+- *readme.md*: A `readme` file for this module.
+
 ## ASIC Hierarchy
 
 The following hierarchy is used in the ASIC (each cell can be expanded to show its components):
 
-<style>
+<!-- <style>
     details {
         font-family: monospace;
     }
@@ -18,7 +27,7 @@ The following hierarchy is used in the ASIC (each cell can be expanded to show i
         list-style-position: inside;
         padding-left: 0;
     }
-</style>
+</style> -->
 
 <details>
     <summary>top_level</summary>

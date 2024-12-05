@@ -1,0 +1,109 @@
+* Top cell name: dc_ch_4
+
+.SUBCKT inv_ch_2 conf conf' in out vdd vss
+    Mm4 net12 in net015 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 net015 conf' vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm0 out in net12 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm5 net020 in net014 vss n_mos l=30n w=100n m=1 nf=1
+    Mm3 net014 conf vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm1 out in net020 vss n_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT inv_ch_8 conf conf' in out vdd vss
+    Mm13 net030 in net029 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm12 net031 in net030 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm11 net018 in net031 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm10 net021 in net018 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm7 net015 in net016 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm6 net016 in net021 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm4 net12 in net015 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 net029 conf' vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm0 out in net12 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm17 net019 in net035 vss n_mos l=30n w=100n m=1 nf=1
+    Mm16 net035 in net037 vss n_mos l=30n w=100n m=1 nf=1
+    Mm15 net037 in net036 vss n_mos l=30n w=100n m=1 nf=1
+    Mm14 net036 in net014 vss n_mos l=30n w=100n m=1 nf=1
+    Mm9 net027 in net019 vss n_mos l=30n w=100n m=1 nf=1
+    Mm8 net017 in net027 vss n_mos l=30n w=100n m=1 nf=1
+    Mm5 net020 in net017 vss n_mos l=30n w=100n m=1 nf=1
+    Mm3 net014 conf vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm1 out in net020 vss n_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT inv_ch_4 conf conf' in out vdd vss
+    Mm7 net015 in net016 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm6 net016 in net021 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm4 net12 in net015 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 net021 conf' vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm0 out in net12 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm9 net027 in net014 vss n_mos l=30n w=100n m=1 nf=1
+    Mm8 net017 in net027 vss n_mos l=30n w=100n m=1 nf=1
+    Mm5 net020 in net017 vss n_mos l=30n w=100n m=1 nf=1
+    Mm3 net014 conf vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm1 out in net020 vss n_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT inv_ch_1 conf conf' in out vdd vss
+    Mm2 net12 conf' vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm0 out in net12 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm3 net014 conf vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm1 out in net014 vss n_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT inv_ch_8l_mod in out vdd vss
+    Mm58 int_p in net026 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm59 net026 in net047 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm60 net047 in net025 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm61 net025 in net050 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm62 net050 in net046 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm63 net046 in net028 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm64 net028 in net029 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm65 net029 in vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm13 net030 in int_p vdd p_mos l=30n w=100n m=1 nf=1
+    Mm12 net031 in net030 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm11 net018 in net031 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm10 net021 in net018 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm7 net015 in net016 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm6 net016 in net021 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm4 net12 in net015 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm0 out in net12 vdd p_mos l=30n w=100n m=1 nf=1
+    Mm66 net055 in vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm67 net056 in net055 vss n_mos l=30n w=100n m=1 nf=1
+    Mm68 net033 in net056 vss n_mos l=30n w=100n m=1 nf=1
+    Mm69 net032 in net033 vss n_mos l=30n w=100n m=1 nf=1
+    Mm70 net061 in net032 vss n_mos l=30n w=100n m=1 nf=1
+    Mm71 net059 in net061 vss n_mos l=30n w=100n m=1 nf=1
+    Mm72 net057 in net059 vss n_mos l=30n w=100n m=1 nf=1
+    Mm73 int_n in net057 vss n_mos l=30n w=100n m=1 nf=1
+    Mm17 net019 in net035 vss n_mos l=30n w=100n m=1 nf=1
+    Mm16 net035 in net037 vss n_mos l=30n w=100n m=1 nf=1
+    Mm15 net037 in net036 vss n_mos l=30n w=100n m=1 nf=1
+    Mm14 net036 in int_n vss n_mos l=30n w=100n m=1 nf=1
+    Mm9 net027 in net019 vss n_mos l=30n w=100n m=1 nf=1
+    Mm8 net017 in net027 vss n_mos l=30n w=100n m=1 nf=1
+    Mm5 net020 in net017 vss n_mos l=30n w=100n m=1 nf=1
+    Mm1 out in net020 vss n_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT dc_ch_4 conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8> conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0> conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10> conf<11> conf<12> conf<13> conf<14> conf<15> in int0 int1 int2 out vdd vss
+    Xi60 conf<2> conf'<2> in int0 vdd vss inv_ch_2
+    Xi61 conf<6> conf'<6> int0 int1 vdd vss inv_ch_2
+    Xi62 conf<10> conf'<10> int1 int2 vdd vss inv_ch_2
+    Xi63 conf<14> conf'<14> int2 out vdd vss inv_ch_2
+    Xi48 conf<0> conf'<0> in int0 vdd vss inv_ch_8
+    Xi51 conf<12> conf'<12> int2 out vdd vss inv_ch_8
+    Xi49 conf<4> conf'<4> int0 int1 vdd vss inv_ch_8
+    Xi50 conf<8> conf'<8> int1 int2 vdd vss inv_ch_8
+    Xi56 conf<1> conf'<1> in int0 vdd vss inv_ch_4
+    Xi59 conf<13> conf'<13> int2 out vdd vss inv_ch_4
+    Xi57 conf<5> conf'<5> int0 int1 vdd vss inv_ch_4
+    Xi58 conf<9> conf'<9> int1 int2 vdd vss inv_ch_4
+    Xi67 conf<15> conf'<15> int2 out vdd vss inv_ch_1
+    Xi66 conf<11> conf'<11> int1 int2 vdd vss inv_ch_1
+    Xi65 conf<7> conf'<7> int0 int1 vdd vss inv_ch_1
+    Xi64 conf<3> conf'<3> in int0 vdd vss inv_ch_1
+    Xi76 in int0 vdd vss inv_ch_8l_mod
+    Xi73 int0 int1 vdd vss inv_ch_8l_mod
+    Xi74 int1 int2 vdd vss inv_ch_8l_mod
+    Xi75 int2 out vdd vss inv_ch_8l_mod
+.ENDS

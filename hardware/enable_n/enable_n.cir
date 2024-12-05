@@ -1,0 +1,59 @@
+* Top cell name: enable_n
+
+.SUBCKT nand2 in0 in1 out vdd vss
+    Mm1 net9 in1 vss vss n_mos l=30n w=200n m=1 nf=1
+    Mm0 out in0 net9 vss n_mos l=30n w=200n m=1 nf=1
+    Mm3 out in1 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 out in0 vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT nor2 in0 in1 out vdd vss
+    Mm1 out in1 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm0 out in0 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm3 net5 in1 vdd vdd p_mos l=30n w=200n m=1 nf=1
+    Mm2 out in0 net5 vdd p_mos l=30n w=200n m=1 nf=1
+.ENDS
+
+.SUBCKT nand3_r in0 in1 in2 out rst vdd vss
+    Mm3 out rst vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm2 net6 in2 vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm1 net7 in1 net6 vss n_mos l=30n w=300n m=1 nf=1
+    Mm0 out in0 net7 vss n_mos l=30n w=300n m=1 nf=1
+    Mm7 net21 rst vdd vdd p_mos l=30n w=200n m=1 nf=1
+    Mm6 out in2 net21 vdd p_mos l=30n w=200n m=1 nf=1
+    Mm5 out in1 net21 vdd p_mos l=30n w=200n m=1 nf=1
+    Mm4 out in0 net21 vdd p_mos l=30n w=200n m=1 nf=1
+.ENDS
+
+.SUBCKT nand3 in0 in1 in2 out vdd vss
+    Mm4 net016 in2 vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm1 net3 in1 net016 vss n_mos l=30n w=300n m=1 nf=1
+    Mm0 out in0 net3 vss n_mos l=30n w=300n m=1 nf=1
+    Mm5 out in2 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm3 out in1 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 out in0 vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT inv_dh in out vdd vss
+    Mm0 out in vss vss n_mos l=30n w=200n m=1 nf=1
+    Mm1 out in vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT dff_st_ar_dh clk q q' rst rst' vdd vss
+    Xi5 q n1 q' vdd vss nand2
+    Xi4 n0 q' q vdd vss nand2
+    Xi2 n3 n0 n2 vdd vss nand2
+    Xi6 clk n0 n3 n1 rst vdd vss nand3_r
+    Xi7 clk n2 rst' n0 vdd vss nand3
+    Xi8 n1 n3 vdd vss inv_dh
+.ENDS
+
+.SUBCKT enable_n edge en rst rst' rst_glob rst_glob' start vdd vss
+    Xi7 startl' edgel' edge_rst_loc' vdd vss nand2
+    Xi8 edge_rst_loc' rst_glob' edge_rst vdd vss nand2
+    Xi4 edgel startl en vdd vss nand2
+    Xi9 edge_rst_loc rst_glob edge_rst' vdd vss nor2
+    Xi5 startl edgel edge_rst_loc vdd vss nor2
+    Xi2 edge edgel' edgel edge_rst edge_rst' vdd vss dff_st_ar_dh
+    Xi0 start startl startl' rst rst' vdd vss dff_st_ar_dh
+.ENDS

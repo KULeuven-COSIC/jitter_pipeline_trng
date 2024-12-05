@@ -14,7 +14,7 @@ from shapely import transform # type: ignore
 sys.path.append(getcwd())
 from lib import time_logger as t_l # pylint: disable=wrong-import-position
 
-TOP_MODULE = 'DFF_ST_AR'
+TOP_MODULE = 'core_top'
 
 class GdsToSvg:
     """This class converts GDS files to SVG."""

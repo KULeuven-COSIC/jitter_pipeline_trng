@@ -1,0 +1,25 @@
+* Top cell name: dc_rst_check
+
+.SUBCKT nand5 in0 in1 in2 in3 in4 out vdd vss
+    Mm4 net21 in4 vss vss n_mos l=30n w=400n m=1 nf=1
+    Mm3 net22 in3 net21 vss n_mos l=30n w=400n m=1 nf=1
+    Mm2 net23 in2 net22 vss n_mos l=30n w=400n m=1 nf=1
+    Mm1 net24 in1 net23 vss n_mos l=30n w=400n m=1 nf=1
+    Mm0 out in0 net24 vss n_mos l=30n w=400n m=1 nf=1
+    Mm9 out in0 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm8 out in4 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm7 out in3 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm6 out in1 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm5 out in2 vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT inv in out vdd vss
+    Mm0 out in vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm1 out in vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT dc_rst_check dc_in int0 int1 int2 muxin0 out vdd vss
+    Xi0 dc_in int0' int1 int2' muxin0 out vdd vss nand5
+    Xi2 int2 int2' vdd vss inv
+    Xi1 int0 int0' vdd vss inv
+.ENDS

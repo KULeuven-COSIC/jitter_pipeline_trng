@@ -1,0 +1,26 @@
+* Top cell name: mux4
+
+.SUBCKT nand2 in0 in1 out vdd vss
+    Mm1 net9 in1 vss vss n_mos l=30n w=200n m=1 nf=1
+    Mm0 out in0 net9 vss n_mos l=30n w=200n m=1 nf=1
+    Mm3 out in1 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 out in0 vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT inv in out vdd vss
+    Mm0 out in vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm1 out in vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT mux2 in0 in1 out sel vdd vss
+    Xi2 in0 net7 net9 vdd vss nand2
+    Xi1 in1 sel net10 vdd vss nand2
+    Xi0 net10 net9 out vdd vss nand2
+    Xi3 sel net7 vdd vss inv
+.ENDS
+
+.SUBCKT mux4 in<0> in<1> in<2> in<3> out sel<0> sel<1> vdd vss
+    Xi2 in<2> in<3> net5 sel<0> vdd vss mux2
+    Xi1 in<0> in<1> net6 sel<0> vdd vss mux2
+    Xi0 net6 net5 out sel<1> vdd vss mux2
+.ENDS

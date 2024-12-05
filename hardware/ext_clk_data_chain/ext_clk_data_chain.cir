@@ -1,0 +1,89 @@
+* Top cell name: ext_clk_data_chain
+
+.SUBCKT nand2 in0 in1 out vdd vss
+    Mm1 net9 in1 vss vss n_mos l=30n w=200n m=1 nf=1
+    Mm0 out in0 net9 vss n_mos l=30n w=200n m=1 nf=1
+    Mm3 out in1 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 out in0 vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT inv in out vdd vss
+    Mm0 out in vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm1 out in vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT mux2 in0 in1 out sel vdd vss
+    Xi2 in0 net7 net9 vdd vss nand2
+    Xi1 in1 sel net10 vdd vss nand2
+    Xi0 net10 net9 out vdd vss nand2
+    Xi3 sel net7 vdd vss inv
+.ENDS
+
+.SUBCKT nand3_r in0 in1 in2 out rst vdd vss
+    Mm3 out rst vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm2 net6 in2 vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm1 net7 in1 net6 vss n_mos l=30n w=300n m=1 nf=1
+    Mm0 out in0 net7 vss n_mos l=30n w=300n m=1 nf=1
+    Mm7 net21 rst vdd vdd p_mos l=30n w=200n m=1 nf=1
+    Mm6 out in2 net21 vdd p_mos l=30n w=200n m=1 nf=1
+    Mm5 out in1 net21 vdd p_mos l=30n w=200n m=1 nf=1
+    Mm4 out in0 net21 vdd p_mos l=30n w=200n m=1 nf=1
+.ENDS
+
+.SUBCKT nand3 in0 in1 in2 out vdd vss
+    Mm4 net016 in2 vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm1 net3 in1 net016 vss n_mos l=30n w=300n m=1 nf=1
+    Mm0 out in0 net3 vss n_mos l=30n w=300n m=1 nf=1
+    Mm5 out in2 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm3 out in1 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 out in0 vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT dff_st_ar clk d q q' rst rst' vdd vss
+    Xi5 q n1 q' vdd vss nand2
+    Xi4 n0 q' q vdd vss nand2
+    Xi3 n1 d n3 vdd vss nand2
+    Xi2 n3 n0 n2 vdd vss nand2
+    Xi6 clk n0 n3 n1 rst vdd vss nand3_r
+    Xi7 clk n2 rst' n0 vdd vss nand3
+.ENDS
+
+.SUBCKT ext_clk_data_chain_el conf_bit'cnt ext_clk in in_bit in_cnt out rst rst' send vdd vss
+    Xi1 net9 in net10 send vdd vss mux2
+    Xi0 in_bit in_cnt net9 conf_bit'cnt vdd vss mux2
+    Xi2 ext_clk net10 out net13 rst rst' vdd vss dff_st_ar
+.ENDS
+
+.SUBCKT inv_dh in out vdd vss
+    Mm0 out in vss vss n_mos l=30n w=200n m=1 nf=1
+    Mm1 out in vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT dff_st_ar_dh clk q q' rst rst' vdd vss
+    Xi5 q n1 q' vdd vss nand2
+    Xi4 n0 q' q vdd vss nand2
+    Xi2 n3 n0 n2 vdd vss nand2
+    Xi6 clk n0 n3 n1 rst vdd vss nand3_r
+    Xi7 clk n2 rst' n0 vdd vss nand3
+    Xi8 n1 n3 vdd vss inv_dh
+.ENDS
+
+.SUBCKT ext_clk_data_chain conf_bit'cnt data_out ext_clk in_bit<0> in_bit<1> in_bit<2> in_bit<3> in_bit<4> in_bit<5> in_bit<6> in_bit<7> in_cnt<0> in_cnt<1> in_cnt<2> in_cnt<3> in_cnt<4> in_cnt<5> in_cnt<6> in_cnt<7> in_cnt<8> in_cnt<9> in_cnt<10> in_cnt<11> in_cnt<12> in_cnt<13> in_cnt<14> in_cnt_0 rst rst' vdd vss
+    Xi63 conf_bit'cnt ext_clk int<7> in_bit<0> in_cnt<7> int<8> rst rst' send vdd vss ext_clk_data_chain_el
+    Xi62 conf_bit'cnt ext_clk int<14> in_bit<7> in_cnt<14> data_out rst rst' send vdd vss ext_clk_data_chain_el
+    Xi61 conf_bit'cnt ext_clk int<13> in_bit<6> in_cnt<13> int<14> rst rst' send vdd vss ext_clk_data_chain_el
+    Xi60 conf_bit'cnt ext_clk int<12> in_bit<5> in_cnt<12> int<13> rst rst' send vdd vss ext_clk_data_chain_el
+    Xi59 conf_bit'cnt ext_clk int<11> in_bit<4> in_cnt<11> int<12> rst rst' send vdd vss ext_clk_data_chain_el
+    Xi58 conf_bit'cnt ext_clk int<10> in_bit<3> in_cnt<10> int<11> rst rst' send vdd vss ext_clk_data_chain_el
+    Xi57 conf_bit'cnt ext_clk int<9> in_bit<2> in_cnt<9> int<10> rst rst' send vdd vss ext_clk_data_chain_el
+    Xi56 conf_bit'cnt ext_clk int<8> in_bit<1> in_cnt<8> int<9> rst rst' send vdd vss ext_clk_data_chain_el
+    Xi55 conf_bit'cnt ext_clk int<6> rst in_cnt<6> int<7> rst rst' send vdd vss ext_clk_data_chain_el
+    Xi54 conf_bit'cnt ext_clk int<5> rst in_cnt<5> int<6> rst rst' send vdd vss ext_clk_data_chain_el
+    Xi53 conf_bit'cnt ext_clk int<4> rst in_cnt<4> int<5> rst rst' send vdd vss ext_clk_data_chain_el
+    Xi52 conf_bit'cnt ext_clk int<3> rst in_cnt<3> int<4> rst rst' send vdd vss ext_clk_data_chain_el
+    Xi51 conf_bit'cnt ext_clk int<2> rst in_cnt<2> int<3> rst rst' send vdd vss ext_clk_data_chain_el
+    Xi50 conf_bit'cnt ext_clk int<1> rst in_cnt<1> int<2> rst rst' send vdd vss ext_clk_data_chain_el
+    Xi49 conf_bit'cnt ext_clk int<0> rst in_cnt<0> int<1> rst rst' send vdd vss ext_clk_data_chain_el
+    Xi48 conf_bit'cnt ext_clk rst rst in_cnt_0 int<0> rst rst' send vdd vss ext_clk_data_chain_el
+    Xi64 ext_clk send net073 rst rst' vdd vss dff_st_ar_dh
+.ENDS

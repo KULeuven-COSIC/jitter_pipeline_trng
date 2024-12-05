@@ -1,0 +1,111 @@
+* Top cell name: vdl_branch
+
+.SUBCKT nand2 in0 in1 out vdd vss
+    Mm1 net9 in1 vss vss n_mos l=30n w=200n m=1 nf=1
+    Mm0 out in0 net9 vss n_mos l=30n w=200n m=1 nf=1
+    Mm3 out in1 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 out in0 vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT nand3_r in0 in1 in2 out rst vdd vss
+    Mm3 out rst vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm2 net6 in2 vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm1 net7 in1 net6 vss n_mos l=30n w=300n m=1 nf=1
+    Mm0 out in0 net7 vss n_mos l=30n w=300n m=1 nf=1
+    Mm7 net21 rst vdd vdd p_mos l=30n w=200n m=1 nf=1
+    Mm6 out in2 net21 vdd p_mos l=30n w=200n m=1 nf=1
+    Mm5 out in1 net21 vdd p_mos l=30n w=200n m=1 nf=1
+    Mm4 out in0 net21 vdd p_mos l=30n w=200n m=1 nf=1
+.ENDS
+
+.SUBCKT nand3 in0 in1 in2 out vdd vss
+    Mm4 net016 in2 vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm1 net3 in1 net016 vss n_mos l=30n w=300n m=1 nf=1
+    Mm0 out in0 net3 vss n_mos l=30n w=300n m=1 nf=1
+    Mm5 out in2 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm3 out in1 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 out in0 vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT dff_st_ar clk d q q' rst rst' vdd vss
+    Xi5 q n1 q' vdd vss nand2
+    Xi4 n0 q' q vdd vss nand2
+    Xi3 n1 d n3 vdd vss nand2
+    Xi2 n3 n0 n2 vdd vss nand2
+    Xi6 clk n0 n3 n1 rst vdd vss nand3_r
+    Xi7 clk n2 rst' n0 vdd vss nand3
+.ENDS
+
+.SUBCKT nor2 in0 in1 out vdd vss
+    Mm1 out in1 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm0 out in0 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm3 net5 in1 vdd vdd p_mos l=30n w=200n m=1 nf=1
+    Mm2 out in0 net5 vdd p_mos l=30n w=200n m=1 nf=1
+.ENDS
+
+.SUBCKT edge_to_level conf_enhigh' edge enable enable' level rst rst' vdd vss
+    Xi0 edge nor net10 level_loc' nand nor vdd vss dff_st_ar
+    Xi1 enable' rst nor vdd vss nor2
+    Xi3 level_loc' conf_enhigh' level vdd vss nand2
+    Xi2 enable rst' nand vdd vss nand2
+.ENDS
+
+.SUBCKT inv_oo_dc_0 in out vdd vss
+    Mm0 out in vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm1 out in vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT inv_oo_dc_1 conf conf' in out vdd vss
+    Mm1 net7 conf vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm0 out in net7 vss n_mos l=30n w=100n m=1 nf=1
+    Mm3 net5 conf' vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 out in net5 vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT vdl_oo_2 conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8> conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0> conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10> conf<11> conf<12> conf<13> conf<14> conf<15> in out vdd vss
+    Xi1 int out vdd vss inv_oo_dc_0
+    Xi0 in int vdd vss inv_oo_dc_0
+    Xi17 conf<15> conf'<15> int out vdd vss inv_oo_dc_1
+    Xi16 conf<7> conf'<7> in int vdd vss inv_oo_dc_1
+    Xi15 conf<14> conf'<14> int out vdd vss inv_oo_dc_1
+    Xi14 conf<6> conf'<6> in int vdd vss inv_oo_dc_1
+    Xi13 conf<13> conf'<13> int out vdd vss inv_oo_dc_1
+    Xi12 conf<5> conf'<5> in int vdd vss inv_oo_dc_1
+    Xi11 conf<12> conf'<12> int out vdd vss inv_oo_dc_1
+    Xi10 conf<4> conf'<4> in int vdd vss inv_oo_dc_1
+    Xi9 conf<11> conf'<11> int out vdd vss inv_oo_dc_1
+    Xi8 conf<3> conf'<3> in int vdd vss inv_oo_dc_1
+    Xi7 conf<10> conf'<10> int out vdd vss inv_oo_dc_1
+    Xi6 conf<2> conf'<2> in int vdd vss inv_oo_dc_1
+    Xi5 conf<9> conf'<9> int out vdd vss inv_oo_dc_1
+    Xi4 conf<1> conf'<1> in int vdd vss inv_oo_dc_1
+    Xi3 conf<8> conf'<8> int out vdd vss inv_oo_dc_1
+    Xi2 conf<0> conf'<0> in int vdd vss inv_oo_dc_1
+.ENDS
+
+.SUBCKT nand2_dnw in0 in1 out vdd vss
+    Mm0 out in0 net9 vss n_mos l=30n w=200n m=1 nf=1
+    Mm1 net9 in1 vss vss n_mos l=30n w=200n m=1 nf=1
+    Mm3 out in1 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 out in0 vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT vdl_oo_3 conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8> conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0> conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10> conf<11> conf<12> conf<13> conf<14> conf<15> enable out vdd vss
+    Xi0 conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8> conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0> conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10> conf<11> conf<12> conf<13> conf<14> conf<15> nand out vdd vss vdl_oo_2
+    Xi1 out enable nand vdd vss nand2_dnw
+.ENDS
+
+.SUBCKT buf_en enable in out vdd vss
+    Mm2 net7 enable vss vss n_mos l=30n w=400n m=4 nf=1
+    Mm1 out int net7 vss n_mos l=30n w=400n m=4 nf=1
+    Mm0 int in vss vss n_mos l=30n w=200n m=2 nf=1
+    Mm5 out int vdd vdd p_mos l=30n w=200n m=4 nf=1
+    Mm4 out enable vdd vdd p_mos l=30n w=100n m=4 nf=1
+    Mm3 int in vdd vdd p_mos l=30n w=200n m=2 nf=1
+.ENDS
+
+.SUBCKT vdl_branch conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8> conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0> conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10> conf<11> conf<12> conf<13> conf<14> conf<15> conf_enhigh' edge enable enable' out rst rst' vdd vdd_vdl vss vss_vdl
+    Xi0 conf_enhigh' edge enable enable' enable_int rst rst' vdd vss edge_to_level
+    Xi1 conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8> conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0> conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10> conf<11> conf<12> conf<13> conf<14> conf<15> enable_int ro_out vdd_vdl vss_vdl vdl_oo_3
+    Xi3 enable ro_out out vdd vss buf_en
+.ENDS

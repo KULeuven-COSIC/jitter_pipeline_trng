@@ -1,0 +1,59 @@
+* Top cell name: bit_data_chain
+
+.SUBCKT inv in out vdd vss
+    Mm0 out in vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm1 out in vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT nand2 in0 in1 out vdd vss
+    Mm1 net9 in1 vss vss n_mos l=30n w=200n m=1 nf=1
+    Mm0 out in0 net9 vss n_mos l=30n w=200n m=1 nf=1
+    Mm3 out in1 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 out in0 vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT nand3_r in0 in1 in2 out rst vdd vss
+    Mm3 out rst vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm2 net6 in2 vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm1 net7 in1 net6 vss n_mos l=30n w=300n m=1 nf=1
+    Mm0 out in0 net7 vss n_mos l=30n w=300n m=1 nf=1
+    Mm7 net21 rst vdd vdd p_mos l=30n w=200n m=1 nf=1
+    Mm6 out in2 net21 vdd p_mos l=30n w=200n m=1 nf=1
+    Mm5 out in1 net21 vdd p_mos l=30n w=200n m=1 nf=1
+    Mm4 out in0 net21 vdd p_mos l=30n w=200n m=1 nf=1
+.ENDS
+
+.SUBCKT nand3 in0 in1 in2 out vdd vss
+    Mm4 net016 in2 vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm1 net3 in1 net016 vss n_mos l=30n w=300n m=1 nf=1
+    Mm0 out in0 net3 vss n_mos l=30n w=300n m=1 nf=1
+    Mm5 out in2 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm3 out in1 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 out in0 vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT dff_st_ar clk d q q' rst rst' vdd vss
+    Xi5 q n1 q' vdd vss nand2
+    Xi4 n0 q' q vdd vss nand2
+    Xi3 n1 d n3 vdd vss nand2
+    Xi2 n3 n0 n2 vdd vss nand2
+    Xi6 clk n0 n3 n1 rst vdd vss nand3_r
+    Xi7 clk n2 rst' n0 vdd vss nand3
+.ENDS
+
+.SUBCKT dff_inv clk d q rst rst' vdd vss
+    Xi1 net12 q vdd vss inv
+    Xi0 net11 net12 vdd vss inv
+    Xi2 clk d net11 net14 rst rst' vdd vss dff_st_ar
+.ENDS
+
+.SUBCKT bit_data_chain clk in out<0> out<1> out<2> out<3> out<4> out<5> out<6> out<7> rst rst' vdd vss
+    Xi14 clk out<5> out<6> rst rst' vdd vss dff_inv
+    Xi13 clk out<4> out<5> rst rst' vdd vss dff_inv
+    Xi12 clk out<3> out<4> rst rst' vdd vss dff_inv
+    Xi11 clk out<2> out<3> rst rst' vdd vss dff_inv
+    Xi10 clk out<1> out<2> rst rst' vdd vss dff_inv
+    Xi9 clk out<0> out<1> rst rst' vdd vss dff_inv
+    Xi8 clk in out<0> rst rst' vdd vss dff_inv
+    Xi15 clk out<6> out<7> rst rst' vdd vss dff_inv
+.ENDS

@@ -1,0 +1,129 @@
+* Top cell name: bit_control
+
+.SUBCKT nand2 in0 in1 out vdd vss
+    Mm1 net9 in1 vss vss n_mos l=30n w=200n m=1 nf=1
+    Mm0 out in0 net9 vss n_mos l=30n w=200n m=1 nf=1
+    Mm3 out in1 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 out in0 vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT nand3_r in0 in1 in2 out rst vdd vss
+    Mm3 out rst vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm2 net6 in2 vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm1 net7 in1 net6 vss n_mos l=30n w=300n m=1 nf=1
+    Mm0 out in0 net7 vss n_mos l=30n w=300n m=1 nf=1
+    Mm7 net21 rst vdd vdd p_mos l=30n w=200n m=1 nf=1
+    Mm6 out in2 net21 vdd p_mos l=30n w=200n m=1 nf=1
+    Mm5 out in1 net21 vdd p_mos l=30n w=200n m=1 nf=1
+    Mm4 out in0 net21 vdd p_mos l=30n w=200n m=1 nf=1
+.ENDS
+
+.SUBCKT nand3 in0 in1 in2 out vdd vss
+    Mm4 net016 in2 vss vss n_mos l=30n w=300n m=1 nf=1
+    Mm1 net3 in1 net016 vss n_mos l=30n w=300n m=1 nf=1
+    Mm0 out in0 net3 vss n_mos l=30n w=300n m=1 nf=1
+    Mm5 out in2 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm3 out in1 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm2 out in0 vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT dff_st_ar clk d q q' rst rst' vdd vss
+    Xi5 q n1 q' vdd vss nand2
+    Xi4 n0 q' q vdd vss nand2
+    Xi3 n1 d n3 vdd vss nand2
+    Xi2 n3 n0 n2 vdd vss nand2
+    Xi6 clk n0 n3 n1 rst vdd vss nand3_r
+    Xi7 clk n2 rst' n0 vdd vss nand3
+.ENDS
+
+.SUBCKT nor2 in0 in1 out vdd vss
+    Mm1 out in1 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm0 out in0 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm3 net5 in1 vdd vdd p_mos l=30n w=200n m=1 nf=1
+    Mm2 out in0 net5 vdd p_mos l=30n w=200n m=1 nf=1
+.ENDS
+
+.SUBCKT inv in out vdd vss
+    Mm0 out in vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm1 out in vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT nor4 in0 in1 in2 in3 out vdd vss
+    Mm3 out in3 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm2 out in2 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm1 out in1 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm0 out in0 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm7 net24 in3 vdd vdd p_mos l=30n w=400n m=1 nf=1
+    Mm6 net23 in2 net24 vdd p_mos l=30n w=400n m=1 nf=1
+    Mm5 net25 in1 net23 vdd p_mos l=30n w=400n m=1 nf=1
+    Mm4 out in0 net25 vdd p_mos l=30n w=400n m=1 nf=1
+.ENDS
+
+.SUBCKT nor5 in0 in1 in2 in3 in4 out vdd vss
+    Mm4 out in4 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm3 out in0 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm2 out in1 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm1 out in3 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm0 out in2 vss vss n_mos l=30n w=100n m=1 nf=1
+    Mm9 net12 in4 vdd vdd p_mos l=30n w=400n m=1 nf=1
+    Mm8 net13 in3 net12 vdd p_mos l=30n w=400n m=1 nf=1
+    Mm7 net14 in2 net13 vdd p_mos l=30n w=400n m=1 nf=1
+    Mm6 net15 in1 net14 vdd p_mos l=30n w=400n m=1 nf=1
+    Mm5 out in0 net15 vdd p_mos l=30n w=400n m=1 nf=1
+.ENDS
+
+.SUBCKT nand5 in0 in1 in2 in3 in4 out vdd vss
+    Mm4 net21 in4 vss vss n_mos l=30n w=400n m=1 nf=1
+    Mm3 net22 in3 net21 vss n_mos l=30n w=400n m=1 nf=1
+    Mm2 net23 in2 net22 vss n_mos l=30n w=400n m=1 nf=1
+    Mm1 net24 in1 net23 vss n_mos l=30n w=400n m=1 nf=1
+    Mm0 out in0 net24 vss n_mos l=30n w=400n m=1 nf=1
+    Mm9 out in0 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm8 out in4 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm7 out in3 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm6 out in1 vdd vdd p_mos l=30n w=100n m=1 nf=1
+    Mm5 out in2 vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT bit_rst_fb bit_cnt<0> bit_cnt<1> bit_cnt<2> bit_cnt<3> bit_data<0> bit_data<1> bit_data<2> bit_data<3> bit_data<4> bit_data<5> bit_data<6> bit_data<7> extclk_cnt<0> extclk_cnt<1> extclk_cnt<2> extclk_cnt<3> extclk_cnt<4> out out' vdd vdl_rst_1' vss
+    Xi2 bit_data<3> bit_data<2> bit_data<1> bit_data<0> net4 vdd vss nor4
+    Xi1 bit_data<7> bit_data<6> bit_data<5> bit_data<4> net5 vdd vss nor4
+    Xi0 bit_cnt<3> bit_cnt<2> bit_cnt<1> bit_cnt<0> net7 vdd vss nor4
+    Xi3 extclk_cnt<4> extclk_cnt<3> extclk_cnt<2> extclk_cnt<1> extclk_cnt<0> net6 vdd vss nor5
+    Xi4 vdl_rst_1' net7 net5 net4 net6 out' vdd vss nand5
+    Xi5 out' out vdd vss inv
+.ENDS
+
+.SUBCKT inv_dh in out vdd vss
+    Mm0 out in vss vss n_mos l=30n w=200n m=1 nf=1
+    Mm1 out in vdd vdd p_mos l=30n w=100n m=1 nf=1
+.ENDS
+
+.SUBCKT dff_st_ar_dh clk q q' rst rst' vdd vss
+    Xi5 q n1 q' vdd vss nand2
+    Xi4 n0 q' q vdd vss nand2
+    Xi2 n3 n0 n2 vdd vss nand2
+    Xi6 clk n0 n3 n1 rst vdd vss nand3_r
+    Xi7 clk n2 rst' n0 vdd vss nand3
+    Xi8 n1 n3 vdd vss inv_dh
+.ENDS
+
+.SUBCKT bit_control bit_cnt<0> bit_cnt<1> bit_cnt<2> bit_cnt<3> bit_data<0> bit_data<1> bit_data<2> bit_data<3> bit_data<4> bit_data<5> bit_data<6> bit_data<7> bit_ready bit_rst bit_rst' extclk_cnt<0> extclk_cnt<1> extclk_cnt<2> extclk_cnt<3> extclk_cnt<4> ext_clk ready_clk rst_glob rst_glob' vdd vdl_rst_loc vdl_rst_loc' vss
+    Xi23 ready_clk net024 vdl_rst_1 vdl_rst_1' bit_rst bit_rst' vdd vss dff_st_ar
+    Xi8 ext_clk nor4 bit_rst_loc bit_rst_loc' bit_rst_rst bit_rst_rst' vdd vss dff_st_ar
+    Xi4 net09 vdl_rst_loc vdl_rst_rst_loc vdl_rst_rst_loc' vdl_rst_loc' vdl_rst_loc vdd vss dff_st_ar
+    Xi0 ready_clk nand3 vdl_rst_0 vdl_rst_0' vdl_rst_rst vdl_rst_rst' vdd vss dff_st_ar
+    Xi20 bit_cnt<2> bit_cnt<1> bit_cnt<0> nand3 vdd vss nand3
+    Xi21 vdl_rst_0' vdl_rst_1' vdl_rst_loc vdd vss nand2
+    Xi14 bit_rst_loc' rst_glob' bit_rst vdd vss nand2
+    Xi6 bit_rst' vdl_rst_rst_loc' vdl_rst_rst vdd vss nand2
+    Xi22 vdl_rst_0 vdl_rst_1 vdl_rst_loc' vdd vss nor2
+    Xi15 bit_rst_loc rst_glob bit_rst' vdd vss nor2
+    Xi7 bit_rst vdl_rst_rst_loc vdl_rst_rst' vdd vss nor2
+    Xi25 nand3 net024 vdd vss inv
+    Xi12 extclk_cnt<3> net041 vdd vss inv
+    Xi17 ready_clk net09 vdd vss inv
+    Xi11 extclk_cnt<0> extclk_cnt<1> extclk_cnt<2> net041 nor4 vdd vss nor4
+    Xi26 bit_cnt<0> bit_cnt<1> bit_cnt<2> bit_cnt<3> bit_data<0> bit_data<1> bit_data<2> bit_data<3> bit_data<4> bit_data<5> bit_data<6> bit_data<7> extclk_cnt<0> extclk_cnt<1> extclk_cnt<2> extclk_cnt<3> extclk_cnt<4> bit_rst_rst bit_rst_rst' vdd vdl_rst_1' vss bit_rst_fb
+    Xi10 bit_cnt<3> bit_ready net017 bit_rst bit_rst' vdd vss dff_st_ar_dh
+.ENDS
