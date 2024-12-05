@@ -1,0 +1,5 @@
+*.gds
+.mypy_cache
+.DS_Store
+.vscode
+__pycache__/
