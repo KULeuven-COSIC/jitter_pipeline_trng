@@ -4,6 +4,6 @@
 .DS_Store
 .vscode
 __pycache__/
-lib/*.json
 figures/pdf/
 figures/data/
+hardware/cadence_libs/

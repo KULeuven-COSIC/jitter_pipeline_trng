@@ -22,7 +22,7 @@ class GdsToSvg:
     _SVG_NS = 'http://www.w3.org/2000/svg'
     _SVG_LINK = 'http://www.w3.org/1999/xlink'
     _HW_FOLDER = 'hardware'
-    _LAYER_DATA_FILE = join('lib', 'gds_to_svg_layers.json')
+    _LAYER_DATA_FILE = join('lib', 'params', 'gds_to_svg_layers.json')
 
     def __init__(self, module_name: str, hw_folder: Optional[str]=None,
                  layer_data: Optional[str]=None, background_col: str='#ffffff',

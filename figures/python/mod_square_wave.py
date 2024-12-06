@@ -1,4 +1,4 @@
-"""Generate RO waveform and corresponding phase verusus time figure.
+"""Generate RO waveform and corresponding phase versus time figure.
 Note! The SVG has to be adjusted to add the X's via Inkscape."""
 import argparse
 import sys

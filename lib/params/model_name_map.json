@@ -1,0 +1,26 @@
+{
+    "models": {
+        "nch_mac": "n_mos",
+        "pch_mac": "p_mos"
+    },
+    "modules": {
+        "dc_branch_v4": "dc_branch",
+        "dc_rstcheck": "dc_rst_check",
+        "dc_ch_4_v2": "dc_ch_4",
+        "firstedge": "first_edge",
+        "freqscaler_248": "freq_scaler_248",
+        "rststart_v5": "rst_start",
+        "dc_top_v5": "dc_top",
+        "extclk_data_chain_el": "ext_clk_data_chain_el",
+        "extclk_data_chain": "ext_clk_data_chain",
+        "enddetector": "end_detector",
+        "extclk_cnt_chain": "ext_clk_cnt_chain",
+        "buf_en_v1": "buf_en",
+        "send_top_v1": "send_top",
+        "freqscaler": "freq_scaler",
+        "edge2level": "edge_to_level",
+        "vdl_top_v1": "vdl_top",
+        "conf_top_v0": "conf_top",
+        "core_top_v0": "core_top"
+    }
+}

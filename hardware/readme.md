@@ -16,19 +16,6 @@ Each folder contains the following files:
 
 The following hierarchy is used in the ASIC (each cell can be expanded to show its components):
 
-<!-- <style>
-    details {
-        font-family: monospace;
-    }
-    details blockquote {
-        background-color: white;
-    }
-    details ul {
-        list-style-position: inside;
-        padding-left: 0;
-    }
-</style> -->
-
 <details>
     <summary>top_level</summary>
     <blockquote>

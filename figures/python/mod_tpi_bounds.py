@@ -1,4 +1,4 @@
-"""Generate lower and upper bounds from eq 7.12 figure."""
+"""Generate lower and upper bounds from figure."""
 import argparse
 import sys
 from os import getcwd

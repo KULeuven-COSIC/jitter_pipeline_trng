@@ -45,11 +45,11 @@ $(HW_DIR)%/readme.md: $(HW_DIR)$$*/$$*.png
 	echo '# `$*` Module' > $@
 	echo '![Layout]($*.png)' >> $@
 
-fig: $(FIG_PDF_DIR) $(FIG_PY_PDFS) $(FIG_SVG_PDFS)
+fig: $(FIG_PY_PDFS) $(FIG_SVG_PDFS)
 
 fig_svg: $(FIG_SVG_DIR) $(FIG_PY_SVGS)
 
-$(FIG_PDF_DIR)%.pdf: $(FIG_SVG_DIR) $(FIG_SVG_DIR)%.svg
+$(FIG_PDF_DIR)%.pdf: $(FIG_PDF_DIR) $(FIG_SVG_DIR) $(FIG_SVG_DIR)%.svg
 	rsvg-convert -f pdf -o $@ $(FIG_SVG_DIR)$*.svg
 
 $(FIG_SVG_DIR)%.svg: $(FIG_PY_DIR)%.py $(FIG_DAT_DIR) $(FIG_DAT_DIR)%.csv

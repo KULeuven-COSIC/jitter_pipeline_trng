@@ -2,6 +2,7 @@
 from typing import Optional, Tuple, List, cast, Any, Dict, Union
 import json
 import os
+from os.path import join
 from enum import Enum
 from matplotlib import __version__ as MPL_VERSION # type: ignore # pylint: disable=no-name-in-module
 import matplotlib.pyplot as plt # type: ignore
@@ -23,7 +24,7 @@ import numpy as np
 class GraphMaker:
     """A class containing graph making functionality."""
 
-    _default_param_file: str = 'lib/graph_params.json'
+    _default_param_file: str = join('lib', 'params', 'graph_params.json')
     si_prefixes: List[str] = ['q', 'r', 'y', 'z', 'a', 'f', 'p', 'n', r'$\mu$', 'm', '',
                               'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y', 'R', 'Q']
 

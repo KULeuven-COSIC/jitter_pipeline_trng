@@ -1,4 +1,4 @@
-# Oscillator Jitter based Pipelined TRNG
+# Oscillator Jitter Based Pipelined TRNG
 
 This archive contains a hardware implementation of an oscillator jitter based pipelined True Random Number Generator (TRNG) design.
 
@@ -8,8 +8,8 @@ This archive contains the following folders:
 - *measurements/*: Contains measurement data from a 28 nm ASIC implementation.
 - *math_model/*: Contains a Python implementation of the stochastic model for the pipelined TRNG.
 - *hardware/*: Contains netlist and layout views of the ASIC implementation.
-- *figures*: Contains Python scripts to generate the figures in the publication below and visualizes the data in the *measurement* folder.
-- *lib*: Contains helper Python scripts and figure generation options.
+- *figures/*: Contains Python scripts to generate the figures in the publication below and visualizes the data in the *measurement* folder.
+- *lib/*: Contains helper Python scripts and figure generation options.
 
 ## Publication
 

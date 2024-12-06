@@ -12,7 +12,7 @@ class CircParser:
     """A Spice circuit parser."""
 
     _HW_FOLDER = 'hardware'
-    _MAP_FILE = join('lib', 'model_name_map.json')
+    _MAP_FILE = join('lib', 'params', 'model_name_map.json')
 
     def __init__(self, module_name: str, hw_folder: Optional[str]=None,
                  model_map: Optional[str]=None,
