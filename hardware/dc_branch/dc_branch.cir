@@ -184,7 +184,10 @@
     Mm1 out in net020 vss n_mos l=30n w=100n m=1 nf=1
 .ENDS
 
-.SUBCKT dc_ch_4 conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8> conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0> conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10> conf<11> conf<12> conf<13> conf<14> conf<15> in int0 int1 int2 out vdd vss
+.SUBCKT dc_ch_4 conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8>
+                + conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0>
+                + conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10>
+                + conf<11> conf<12> conf<13> conf<14> conf<15> in int0 int1 int2 out vdd vss
     Xi60 conf<2> conf'<2> in int0 vdd vss inv_ch_2
     Xi61 conf<6> conf'<6> int0 int1 vdd vss inv_ch_2
     Xi62 conf<10> conf'<10> int1 int2 vdd vss inv_ch_2
@@ -240,13 +243,24 @@
     Xi1 int0 int0' vdd vss inv
 .ENDS
 
-.SUBCKT dc_branch conf_dc'<0> conf_dc'<1> conf_dc'<2> conf_dc'<3> conf_dc'<4> conf_dc'<5> conf_dc'<6> conf_dc'<7> conf_dc'<8> conf_dc'<9> conf_dc'<10> conf_dc'<11> conf_dc'<12> conf_dc'<13> conf_dc'<14> conf_dc'<15> conf_dc<0> conf_dc<1> conf_dc<2> conf_dc<3> conf_dc<4> conf_dc<5> conf_dc<6> conf_dc<7> conf_dc<8> conf_dc<9> conf_dc<10> conf_dc<11> conf_dc<12> conf_dc<13> conf_dc<14> conf_dc<15> conf_enhigh conf_freqsel<0> conf_freqsel<1> dc_rst out out_raw rst rst' rst_glob rst_glob' start vdd vdd_dc vss vss_dc
+.SUBCKT dc_branch conf_dc'<0> conf_dc'<1> conf_dc'<2> conf_dc'<3> conf_dc'<4> conf_dc'<5>
+                  + conf_dc'<6> conf_dc'<7> conf_dc'<8> conf_dc'<9> conf_dc'<10> conf_dc'<11>
+                  + conf_dc'<12> conf_dc'<13> conf_dc'<14> conf_dc'<15> conf_dc<0> conf_dc<1>
+                  + conf_dc<2> conf_dc<3> conf_dc<4> conf_dc<5> conf_dc<6> conf_dc<7> conf_dc<8>
+                  + conf_dc<9> conf_dc<10> conf_dc<11> conf_dc<12> conf_dc<13> conf_dc<14>
+                  + conf_dc<15> conf_enhigh conf_freqsel<0> conf_freqsel<1> dc_rst out out_raw rst
+                  + rst' rst_glob rst_glob' start vdd vdd_dc vss vss_dc
     Xi4 mux_out out net19 rst rst' vdd vss first_edge
     Xi3 muxin<0> muxin<1> muxin<2> muxin<3> mux_out conf_freqsel<0> conf_freqsel<1> vdd vss mux4
     Xi5 out enable' rst rst' rst_glob rst_glob' start vdd vss enable_n
     Xi7 enable' conf_enhigh' enable vdd vss nand2
     Xi2 muxin<0> muxin<1> muxin<2> muxin<3> enable' enable vdd vss freq_scaler_248
-    Xi1 conf_dc'<0> conf_dc'<1> conf_dc'<2> conf_dc'<3> conf_dc'<4> conf_dc'<5> conf_dc'<6> conf_dc'<7> conf_dc'<8> conf_dc'<9> conf_dc'<10> conf_dc'<11> conf_dc'<12> conf_dc'<13> conf_dc'<14> conf_dc'<15> conf_dc<0> conf_dc<1> conf_dc<2> conf_dc<3> conf_dc<4> conf_dc<5> conf_dc<6> conf_dc<7> conf_dc<8> conf_dc<9> conf_dc<10> conf_dc<11> conf_dc<12> conf_dc<13> conf_dc<14> conf_dc<15> dc_in dc_int0 dc_int1 dc_int2 muxin<0> vdd_dc vss_dc dc_ch_4
+    Xi1 conf_dc'<0> conf_dc'<1> conf_dc'<2> conf_dc'<3> conf_dc'<4> conf_dc'<5> conf_dc'<6>
+        + conf_dc'<7> conf_dc'<8> conf_dc'<9> conf_dc'<10> conf_dc'<11> conf_dc'<12> conf_dc'<13>
+        + conf_dc'<14> conf_dc'<15> conf_dc<0> conf_dc<1> conf_dc<2> conf_dc<3> conf_dc<4>
+        + conf_dc<5> conf_dc<6> conf_dc<7> conf_dc<8> conf_dc<9> conf_dc<10> conf_dc<11> conf_dc<12>
+        + conf_dc<13> conf_dc<14> conf_dc<15> dc_in dc_int0 dc_int1 dc_int2 muxin<0> vdd_dc vss_dc
+        + dc_ch_4
     Xi6 conf_enhigh conf_enhigh' vdd vss inv
     Xi8 enable muxin<0> dc_in vdd_dc vss_dc nand2_dnw
     Xi9 muxin<0> out_raw vdd vss buf_wide

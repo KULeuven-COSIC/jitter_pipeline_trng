@@ -62,7 +62,10 @@
     Mm2 out in net5 vdd p_mos l=30n w=100n m=1 nf=1
 .ENDS
 
-.SUBCKT vdl_oo_2 conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8> conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0> conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10> conf<11> conf<12> conf<13> conf<14> conf<15> in out vdd vss
+.SUBCKT vdl_oo_2 conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8>
+                 + conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0>
+                 + conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10>
+                 + conf<11> conf<12> conf<13> conf<14> conf<15> in out vdd vss
     Xi1 int out vdd vss inv_oo_dc_0
     Xi0 in int vdd vss inv_oo_dc_0
     Xi17 conf<15> conf'<15> int out vdd vss inv_oo_dc_1
@@ -90,8 +93,14 @@
     Mm2 out in0 vdd vdd p_mos l=30n w=100n m=1 nf=1
 .ENDS
 
-.SUBCKT vdl_oo_3 conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8> conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0> conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10> conf<11> conf<12> conf<13> conf<14> conf<15> enable out vdd vss
-    Xi0 conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8> conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0> conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10> conf<11> conf<12> conf<13> conf<14> conf<15> nand out vdd vss vdl_oo_2
+.SUBCKT vdl_oo_3 conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8>
+                 + conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0>
+                 + conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10>
+                 + conf<11> conf<12> conf<13> conf<14> conf<15> enable out vdd vss
+    Xi0 conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8> conf'<9>
+        + conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0> conf<1> conf<2>
+        + conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10> conf<11> conf<12>
+        + conf<13> conf<14> conf<15> nand out vdd vss vdl_oo_2
     Xi1 out enable nand vdd vss nand2_dnw
 .ENDS
 
@@ -104,9 +113,16 @@
     Mm3 int in vdd vdd p_mos l=30n w=200n m=2 nf=1
 .ENDS
 
-.SUBCKT vdl_branch conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8> conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0> conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10> conf<11> conf<12> conf<13> conf<14> conf<15> conf_enhigh' edge enable enable' out rst rst' vdd vdd_vdl vss vss_vdl
+.SUBCKT vdl_branch conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8>
+                   + conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0>
+                   + conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9>
+                   + conf<10> conf<11> conf<12> conf<13> conf<14> conf<15> conf_enhigh' edge enable
+                   + enable' out rst rst' vdd vdd_vdl vss vss_vdl
     Xi0 conf_enhigh' edge enable enable' enable_int rst rst' vdd vss edge_to_level
-    Xi1 conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8> conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0> conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10> conf<11> conf<12> conf<13> conf<14> conf<15> enable_int ro_out vdd_vdl vss_vdl vdl_oo_3
+    Xi1 conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8> conf'<9>
+        + conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0> conf<1> conf<2>
+        + conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10> conf<11> conf<12>
+        + conf<13> conf<14> conf<15> enable_int ro_out vdd_vdl vss_vdl vdl_oo_3
     Xi3 enable ro_out out vdd vss buf_en
 .ENDS
 
@@ -192,9 +208,32 @@
     Xi2 in0 vdl0s0 net33 rst rst' vdd vss dff_st_ar_dh
 .ENDS
 
-.SUBCKT vdl_top conf_enhigh conf_enhigh' conf_vdl0'<0> conf_vdl0'<1> conf_vdl0'<2> conf_vdl0'<3> conf_vdl0'<4> conf_vdl0'<5> conf_vdl0'<6> conf_vdl0'<7> conf_vdl0'<8> conf_vdl0'<9> conf_vdl0'<10> conf_vdl0'<11> conf_vdl0'<12> conf_vdl0'<13> conf_vdl0'<14> conf_vdl0'<15> conf_vdl0<0> conf_vdl0<1> conf_vdl0<2> conf_vdl0<3> conf_vdl0<4> conf_vdl0<5> conf_vdl0<6> conf_vdl0<7> conf_vdl0<8> conf_vdl0<9> conf_vdl0<10> conf_vdl0<11> conf_vdl0<12> conf_vdl0<13> conf_vdl0<14> conf_vdl0<15> conf_vdl1'<0> conf_vdl1'<1> conf_vdl1'<2> conf_vdl1'<3> conf_vdl1'<4> conf_vdl1'<5> conf_vdl1'<6> conf_vdl1'<7> conf_vdl1'<8> conf_vdl1'<9> conf_vdl1'<10> conf_vdl1'<11> conf_vdl1'<12> conf_vdl1'<13> conf_vdl1'<14> conf_vdl1'<15> conf_vdl1<0> conf_vdl1<1> conf_vdl1<2> conf_vdl1<3> conf_vdl1<4> conf_vdl1<5> conf_vdl1<6> conf_vdl1<7> conf_vdl1<8> conf_vdl1<9> conf_vdl1<10> conf_vdl1<11> conf_vdl1<12> conf_vdl1<13> conf_vdl1<14> conf_vdl1<15> in0 in1 out_raw_0 out_raw_1 rand ready rst rst' vdd vdd_0 vdd_1 vss vss_0 vss_1
-    Xi1 conf_vdl1'<0> conf_vdl1'<1> conf_vdl1'<2> conf_vdl1'<3> conf_vdl1'<4> conf_vdl1'<5> conf_vdl1'<6> conf_vdl1'<7> conf_vdl1'<8> conf_vdl1'<9> conf_vdl1'<10> conf_vdl1'<11> conf_vdl1'<12> conf_vdl1'<13> conf_vdl1'<14> conf_vdl1'<15> conf_vdl1<0> conf_vdl1<1> conf_vdl1<2> conf_vdl1<3> conf_vdl1<4> conf_vdl1<5> conf_vdl1<6> conf_vdl1<7> conf_vdl1<8> conf_vdl1<9> conf_vdl1<10> conf_vdl1<11> conf_vdl1<12> conf_vdl1<13> conf_vdl1<14> conf_vdl1<15> conf_enhigh' in1 enable enable' clk rst rst' vdd vdd_1 vss vss_1 vdl_branch
-    Xi0 conf_vdl0'<0> conf_vdl0'<1> conf_vdl0'<2> conf_vdl0'<3> conf_vdl0'<4> conf_vdl0'<5> conf_vdl0'<6> conf_vdl0'<7> conf_vdl0'<8> conf_vdl0'<9> conf_vdl0'<10> conf_vdl0'<11> conf_vdl0'<12> conf_vdl0'<13> conf_vdl0'<14> conf_vdl0'<15> conf_vdl0<0> conf_vdl0<1> conf_vdl0<2> conf_vdl0<3> conf_vdl0<4> conf_vdl0<5> conf_vdl0<6> conf_vdl0<7> conf_vdl0<8> conf_vdl0<9> conf_vdl0<10> conf_vdl0<11> conf_vdl0<12> conf_vdl0<13> conf_vdl0<14> conf_vdl0<15> conf_enhigh' in0 enable enable' d rst rst' vdd vdd_0 vss vss_0 vdl_branch
+.SUBCKT vdl_top conf_enhigh conf_enhigh' conf_vdl0'<0> conf_vdl0'<1> conf_vdl0'<2> conf_vdl0'<3>
+                + conf_vdl0'<4> conf_vdl0'<5> conf_vdl0'<6> conf_vdl0'<7> conf_vdl0'<8>
+                + conf_vdl0'<9> conf_vdl0'<10> conf_vdl0'<11> conf_vdl0'<12> conf_vdl0'<13>
+                + conf_vdl0'<14> conf_vdl0'<15> conf_vdl0<0> conf_vdl0<1> conf_vdl0<2> conf_vdl0<3>
+                + conf_vdl0<4> conf_vdl0<5> conf_vdl0<6> conf_vdl0<7> conf_vdl0<8> conf_vdl0<9>
+                + conf_vdl0<10> conf_vdl0<11> conf_vdl0<12> conf_vdl0<13> conf_vdl0<14>
+                + conf_vdl0<15> conf_vdl1'<0> conf_vdl1'<1> conf_vdl1'<2> conf_vdl1'<3>
+                + conf_vdl1'<4> conf_vdl1'<5> conf_vdl1'<6> conf_vdl1'<7> conf_vdl1'<8>
+                + conf_vdl1'<9> conf_vdl1'<10> conf_vdl1'<11> conf_vdl1'<12> conf_vdl1'<13>
+                + conf_vdl1'<14> conf_vdl1'<15> conf_vdl1<0> conf_vdl1<1> conf_vdl1<2> conf_vdl1<3>
+                + conf_vdl1<4> conf_vdl1<5> conf_vdl1<6> conf_vdl1<7> conf_vdl1<8> conf_vdl1<9>
+                + conf_vdl1<10> conf_vdl1<11> conf_vdl1<12> conf_vdl1<13> conf_vdl1<14>
+                + conf_vdl1<15> in0 in1 out_raw_0 out_raw_1 rand ready rst rst' vdd vdd_0 vdd_1 vss
+                + vss_0 vss_1
+    Xi1 conf_vdl1'<0> conf_vdl1'<1> conf_vdl1'<2> conf_vdl1'<3> conf_vdl1'<4> conf_vdl1'<5>
+        + conf_vdl1'<6> conf_vdl1'<7> conf_vdl1'<8> conf_vdl1'<9> conf_vdl1'<10> conf_vdl1'<11>
+        + conf_vdl1'<12> conf_vdl1'<13> conf_vdl1'<14> conf_vdl1'<15> conf_vdl1<0> conf_vdl1<1>
+        + conf_vdl1<2> conf_vdl1<3> conf_vdl1<4> conf_vdl1<5> conf_vdl1<6> conf_vdl1<7> conf_vdl1<8>
+        + conf_vdl1<9> conf_vdl1<10> conf_vdl1<11> conf_vdl1<12> conf_vdl1<13> conf_vdl1<14>
+        + conf_vdl1<15> conf_enhigh' in1 enable enable' clk rst rst' vdd vdd_1 vss vss_1 vdl_branch
+    Xi0 conf_vdl0'<0> conf_vdl0'<1> conf_vdl0'<2> conf_vdl0'<3> conf_vdl0'<4> conf_vdl0'<5>
+        + conf_vdl0'<6> conf_vdl0'<7> conf_vdl0'<8> conf_vdl0'<9> conf_vdl0'<10> conf_vdl0'<11>
+        + conf_vdl0'<12> conf_vdl0'<13> conf_vdl0'<14> conf_vdl0'<15> conf_vdl0<0> conf_vdl0<1>
+        + conf_vdl0<2> conf_vdl0<3> conf_vdl0<4> conf_vdl0<5> conf_vdl0<6> conf_vdl0<7> conf_vdl0<8>
+        + conf_vdl0<9> conf_vdl0<10> conf_vdl0<11> conf_vdl0<12> conf_vdl0<13> conf_vdl0<14>
+        + conf_vdl0<15> conf_enhigh' in0 enable enable' d rst rst' vdd vdd_0 vss vss_0 vdl_branch
     Xi2 conf_enhigh conf_enhigh' enable enable' ready rst rst' vdd vss vdl_enable
     Xi3 d clk rand ready rst rst' vdd vss end_detector
     Xi7 clk out_raw_1 vdd vss buf_wide

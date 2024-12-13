@@ -87,7 +87,8 @@
     Xi8 n1 n3 vdd vss inv_dh
 .ENDS
 
-.SUBCKT rst_start conf_fb dc_rst_0 dc_rst_1 edge_0 edge_1 rst rst' rst_glob rst_glob' start_glob start_loc vdd vss
+.SUBCKT rst_start conf_fb dc_rst_0 dc_rst_1 edge_0 edge_1 rst rst' rst_glob rst_glob' start_glob
+                  + start_loc vdd vss
     Xi61 start_glob start_loc_int start_loc conf_fb vdd vss mux2
     Xi55 start_glob_level q_2' start_mux start_sel vdd vss mux2
     Xi48 rst_glob' ar_2_loc' ar_2 vdd vss nand2

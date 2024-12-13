@@ -85,7 +85,10 @@
     Mm1 out in net020 vss n_mos l=30n w=100n m=1 nf=1
 .ENDS
 
-.SUBCKT dc_ch_4 conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8> conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0> conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10> conf<11> conf<12> conf<13> conf<14> conf<15> in int0 int1 int2 out vdd vss
+.SUBCKT dc_ch_4 conf'<0> conf'<1> conf'<2> conf'<3> conf'<4> conf'<5> conf'<6> conf'<7> conf'<8>
+                + conf'<9> conf'<10> conf'<11> conf'<12> conf'<13> conf'<14> conf'<15> conf<0>
+                + conf<1> conf<2> conf<3> conf<4> conf<5> conf<6> conf<7> conf<8> conf<9> conf<10>
+                + conf<11> conf<12> conf<13> conf<14> conf<15> in int0 int1 int2 out vdd vss
     Xi60 conf<2> conf'<2> in int0 vdd vss inv_ch_2
     Xi61 conf<6> conf'<6> int0 int1 vdd vss inv_ch_2
     Xi62 conf<10> conf'<10> int1 int2 vdd vss inv_ch_2

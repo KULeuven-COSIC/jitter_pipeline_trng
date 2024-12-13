@@ -85,7 +85,10 @@
     Mm5 out in2 vdd vdd p_mos l=30n w=100n m=1 nf=1
 .ENDS
 
-.SUBCKT cnt_rst_fb cnt_data<0> cnt_data<1> cnt_data<2> cnt_data<3> cnt_data<4> cnt_data<5> cnt_data<6> cnt_data<7> cnt_data<8> cnt_data<9> cnt_data<10> cnt_data<11> cnt_data<12> cnt_data<13> cnt_data<14> extclk_cnt<0> extclk_cnt<1> extclk_cnt<2> extclk_cnt<3> extclk_cnt<4> out out' ready2 vdd vdl_rst vss
+.SUBCKT cnt_rst_fb cnt_data<0> cnt_data<1> cnt_data<2> cnt_data<3> cnt_data<4> cnt_data<5>
+                   + cnt_data<6> cnt_data<7> cnt_data<8> cnt_data<9> cnt_data<10> cnt_data<11>
+                   + cnt_data<12> cnt_data<13> cnt_data<14> extclk_cnt<0> extclk_cnt<1>
+                   + extclk_cnt<2> extclk_cnt<3> extclk_cnt<4> out out' ready2 vdd vdl_rst vss
     Xi7 cnt_data<12> cnt_data<13> cnt_data<14> vdl_rst ready2 net44 vdd vss nor5
     Xi0 extclk_cnt<0> extclk_cnt<1> extclk_cnt<2> extclk_cnt<3> extclk_cnt<4> net48 vdd vss nor5
     Xi4 cnt_data<8> cnt_data<9> cnt_data<10> cnt_data<11> net45 vdd vss nor4
@@ -106,7 +109,9 @@
     Mm4 out in1 vdd vdd p_mos l=30n w=100n m=1 nf=1
 .ENDS
 
-.SUBCKT cnt_vdl_rst_fb cnt_data<0> cnt_data<1> cnt_data<2> cnt_data<3> cnt_data<4> cnt_data<5> cnt_data<6> cnt_data<7> cnt_data<8> cnt_data<9> cnt_data<10> cnt_data<11> cnt_data<12> cnt_data<13> cnt_data<14> out ready_clk vdd vss
+.SUBCKT cnt_vdl_rst_fb cnt_data<0> cnt_data<1> cnt_data<2> cnt_data<3> cnt_data<4> cnt_data<5>
+                       + cnt_data<6> cnt_data<7> cnt_data<8> cnt_data<9> cnt_data<10> cnt_data<11>
+                       + cnt_data<12> cnt_data<13> cnt_data<14> out ready_clk vdd vss
     Xi3 cnt_data<12> cnt_data<13> cnt_data<14> ready_clk net1 vdd vss nor4
     Xi2 cnt_data<8> cnt_data<9> cnt_data<10> cnt_data<11> net8 vdd vss nor4
     Xi1 cnt_data<4> cnt_data<5> cnt_data<6> cnt_data<7> net034 vdd vss nor4
@@ -129,8 +134,13 @@
     Xi8 n1 n3 vdd vss inv_dh
 .ENDS
 
-.SUBCKT cnt_control cnt_data<0> cnt_data<1> cnt_data<2> cnt_data<3> cnt_data<4> cnt_data<5> cnt_data<6> cnt_data<7> cnt_data<8> cnt_data<9> cnt_data<10> cnt_data<11> cnt_data<12> cnt_data<13> cnt_data<14> cnt_ready cnt_rst cnt_rst' extclk_cnt<0> extclk_cnt<1> extclk_cnt<2> extclk_cnt<3> extclk_cnt<4> ext_clk ready_clk rst_glob rst_glob' vdd vdl_rst_loc vdl_rst_loc' vss
-    Xi10 pre_rst vdl_rst_loc vdl_rst_rst_loc vdl_rst_rst_loc' vdl_rst_loc' vdl_rst_loc vdd vss dff_st_ar
+.SUBCKT cnt_control cnt_data<0> cnt_data<1> cnt_data<2> cnt_data<3> cnt_data<4> cnt_data<5>
+                    + cnt_data<6> cnt_data<7> cnt_data<8> cnt_data<9> cnt_data<10> cnt_data<11>
+                    + cnt_data<12> cnt_data<13> cnt_data<14> cnt_ready cnt_rst cnt_rst'
+                    + extclk_cnt<0> extclk_cnt<1> extclk_cnt<2> extclk_cnt<3> extclk_cnt<4> ext_clk
+                    + ready_clk rst_glob rst_glob' vdd vdl_rst_loc vdl_rst_loc' vss
+    Xi10 pre_rst vdl_rst_loc vdl_rst_rst_loc vdl_rst_rst_loc' vdl_rst_loc' vdl_rst_loc vdd vss
+         + dff_st_ar
     Xi8 ready_clk net019 vdl_rst_0 vdl_rst_0' vdl_rst_rst vdl_rst_rst' vdd vss dff_st_ar
     Xi1 ready_clk ready2 cnt_ready vdl_rst_1' cnt_rst_pre cnt_rst_pre' vdd vss dff_st_ar
     Xi0 ext_clk net19 cnt_rst_loc cnt_rst_loc' cnt_rst_rst cnt_rst_rst' vdd vss dff_st_ar
@@ -145,7 +155,12 @@
     Xi15 vdl_rst_0 cnt_ready vdl_rst_loc' vdd vss nor2
     Xi12 cnt_rst_pre vdl_rst_rst_loc vdl_rst_rst' vdd vss nor2
     Xi6 cnt_rst_loc rst_glob cnt_rst_pre' vdd vss nor2
-    Xi7 cnt_data<0> cnt_data<1> cnt_data<2> cnt_data<3> cnt_data<4> cnt_data<5> cnt_data<6> cnt_data<7> cnt_data<8> cnt_data<9> cnt_data<10> cnt_data<11> cnt_data<12> cnt_data<13> cnt_data<14> extclk_cnt<0> extclk_cnt<1> extclk_cnt<2> extclk_cnt<3> extclk_cnt<4> cnt_rst_rst cnt_rst_rst' ready2 vdd vdl_rst_loc vss cnt_rst_fb
-    Xi16 cnt_data<0> cnt_data<1> cnt_data<2> cnt_data<3> cnt_data<4> cnt_data<5> cnt_data<6> cnt_data<7> cnt_data<8> cnt_data<9> cnt_data<10> cnt_data<11> cnt_data<12> cnt_data<13> cnt_data<14> pre_rst ready_clk vdd vss cnt_vdl_rst_fb
+    Xi7 cnt_data<0> cnt_data<1> cnt_data<2> cnt_data<3> cnt_data<4> cnt_data<5> cnt_data<6>
+        + cnt_data<7> cnt_data<8> cnt_data<9> cnt_data<10> cnt_data<11> cnt_data<12> cnt_data<13>
+        + cnt_data<14> extclk_cnt<0> extclk_cnt<1> extclk_cnt<2> extclk_cnt<3> extclk_cnt<4>
+        + cnt_rst_rst cnt_rst_rst' ready2 vdd vdl_rst_loc vss cnt_rst_fb
+    Xi16 cnt_data<0> cnt_data<1> cnt_data<2> cnt_data<3> cnt_data<4> cnt_data<5> cnt_data<6>
+         + cnt_data<7> cnt_data<8> cnt_data<9> cnt_data<10> cnt_data<11> cnt_data<12> cnt_data<13>
+         + cnt_data<14> pre_rst ready_clk vdd vss cnt_vdl_rst_fb
     Xi4 ready_clk ready2 net03 cnt_rst_pre cnt_rst_pre' vdd vss dff_st_ar_dh
 .ENDS

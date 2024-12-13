@@ -2,10 +2,6 @@
 
 This archive contains a hardware implementation of an oscillator jitter based pipelined True Random Number Generator (TRNG) design.
 
-## TODO
-
-Move measurement data so that the figures relying on this data can be generated.
-
 ## Archive Structure
 
 This archive contains the following folders:

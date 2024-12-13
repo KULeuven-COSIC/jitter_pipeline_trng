@@ -40,7 +40,8 @@
     Xi8 clk q' q q' rst rst' vdd vss dff_st_ar
 .ENDS
 
-.SUBCKT cnt_data_chain out<0> out<1> out<2> out<3> out<4> out<5> out<6> out<7> out<8> out<9> out<10> out<11> out<12> out<13> out<14> rand_in rst rst' vdd vss
+.SUBCKT cnt_data_chain out<0> out<1> out<2> out<3> out<4> out<5> out<6> out<7> out<8> out<9> out<10>
+                       + out<11> out<12> out<13> out<14> rand_in rst rst' vdd vss
     Xi15 out<13> out<14> net10 rst rst' vdd vss tff_st_ar
     Xi14 out<12> out<13> net17 rst rst' vdd vss tff_st_ar
     Xi13 out<11> out<12> net24 rst rst' vdd vss tff_st_ar

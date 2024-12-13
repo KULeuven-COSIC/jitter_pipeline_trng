@@ -47,12 +47,39 @@
     Xi1 q net16 vdd vss inv
 .ENDS
 
-.SUBCKT conf_top conf_bit'cnt conf_clk conf_dc0'<0> conf_dc0'<1> conf_dc0'<2> conf_dc0'<3> conf_dc0'<4> conf_dc0'<5> conf_dc0'<6> conf_dc0'<7> conf_dc0'<8> conf_dc0'<9> conf_dc0'<10> conf_dc0'<11> conf_dc0'<12> conf_dc0'<13> conf_dc0'<14> conf_dc0'<15> conf_dc0<0> conf_dc0<1> conf_dc0<2> conf_dc0<3> conf_dc0<4> conf_dc0<5> conf_dc0<6> conf_dc0<7> conf_dc0<8> conf_dc0<9> conf_dc0<10> conf_dc0<11> conf_dc0<12> conf_dc0<13> conf_dc0<14> conf_dc0<15> conf_dc1'<0> conf_dc1'<1> conf_dc1'<2> conf_dc1'<3> conf_dc1'<4> conf_dc1'<5> conf_dc1'<6> conf_dc1'<7> conf_dc1'<8> conf_dc1'<9> conf_dc1'<10> conf_dc1'<11> conf_dc1'<12> conf_dc1'<13> conf_dc1'<14> conf_dc1'<15> conf_dc1<0> conf_dc1<1> conf_dc1<2> conf_dc1<3> conf_dc1<4> conf_dc1<5> conf_dc1<6> conf_dc1<7> conf_dc1<8> conf_dc1<9> conf_dc1<10> conf_dc1<11> conf_dc1<12> conf_dc1<13> conf_dc1<14> conf_dc1<15> conf_enhigh_dc conf_enhigh_vdl conf_enhigh_vdl' conf_fb conf_freqsel<0> conf_freqsel<1> conf_in conf_rochoose<0> conf_rochoose<1> conf_roen conf_rofreq<0> conf_rofreq<1> conf_rofreq<2> conf_rst conf_rst' conf_sendenable conf_sendenable' conf_vdl0'<0> conf_vdl0'<1> conf_vdl0'<2> conf_vdl0'<3> conf_vdl0'<4> conf_vdl0'<5> conf_vdl0'<6> conf_vdl0'<7> conf_vdl0'<8> conf_vdl0'<9> conf_vdl0'<10> conf_vdl0'<11> conf_vdl0'<12> conf_vdl0'<13> conf_vdl0'<14> conf_vdl0'<15> conf_vdl0<0> conf_vdl0<1> conf_vdl0<2> conf_vdl0<3> conf_vdl0<4> conf_vdl0<5> conf_vdl0<6> conf_vdl0<7> conf_vdl0<8> conf_vdl0<9> conf_vdl0<10> conf_vdl0<11> conf_vdl0<12> conf_vdl0<13> conf_vdl0<14> conf_vdl0<15> conf_vdl1'<0> conf_vdl1'<1> conf_vdl1'<2> conf_vdl1'<3> conf_vdl1'<4> conf_vdl1'<5> conf_vdl1'<6> conf_vdl1'<7> conf_vdl1'<8> conf_vdl1'<9> conf_vdl1'<10> conf_vdl1'<11> conf_vdl1'<12> conf_vdl1'<13> conf_vdl1'<14> conf_vdl1'<15> conf_vdl1<0> conf_vdl1<1> conf_vdl1<2> conf_vdl1<3> conf_vdl1<4> conf_vdl1<5> conf_vdl1<6> conf_vdl1<7> conf_vdl1<8> conf_vdl1<9> conf_vdl1<10> conf_vdl1<11> conf_vdl1<12> conf_vdl1<13> conf_vdl1<14> conf_vdl1<15> vdd vss
+.SUBCKT conf_top conf_bit'cnt conf_clk conf_dc0'<0> conf_dc0'<1> conf_dc0'<2> conf_dc0'<3>
+                 + conf_dc0'<4> conf_dc0'<5> conf_dc0'<6> conf_dc0'<7> conf_dc0'<8> conf_dc0'<9>
+                 + conf_dc0'<10> conf_dc0'<11> conf_dc0'<12> conf_dc0'<13> conf_dc0'<14>
+                 + conf_dc0'<15> conf_dc0<0> conf_dc0<1> conf_dc0<2> conf_dc0<3> conf_dc0<4>
+                 + conf_dc0<5> conf_dc0<6> conf_dc0<7> conf_dc0<8> conf_dc0<9> conf_dc0<10>
+                 + conf_dc0<11> conf_dc0<12> conf_dc0<13> conf_dc0<14> conf_dc0<15> conf_dc1'<0>
+                 + conf_dc1'<1> conf_dc1'<2> conf_dc1'<3> conf_dc1'<4> conf_dc1'<5> conf_dc1'<6>
+                 + conf_dc1'<7> conf_dc1'<8> conf_dc1'<9> conf_dc1'<10> conf_dc1'<11> conf_dc1'<12>
+                 + conf_dc1'<13> conf_dc1'<14> conf_dc1'<15> conf_dc1<0> conf_dc1<1> conf_dc1<2>
+                 + conf_dc1<3> conf_dc1<4> conf_dc1<5> conf_dc1<6> conf_dc1<7> conf_dc1<8>
+                 + conf_dc1<9> conf_dc1<10> conf_dc1<11> conf_dc1<12> conf_dc1<13> conf_dc1<14>
+                 + conf_dc1<15> conf_enhigh_dc conf_enhigh_vdl conf_enhigh_vdl' conf_fb
+                 + conf_freqsel<0> conf_freqsel<1> conf_in conf_rochoose<0> conf_rochoose<1>
+                 + conf_roen conf_rofreq<0> conf_rofreq<1> conf_rofreq<2> conf_rst conf_rst'
+                 + conf_sendenable conf_sendenable' conf_vdl0'<0> conf_vdl0'<1> conf_vdl0'<2>
+                 + conf_vdl0'<3> conf_vdl0'<4> conf_vdl0'<5> conf_vdl0'<6> conf_vdl0'<7>
+                 + conf_vdl0'<8> conf_vdl0'<9> conf_vdl0'<10> conf_vdl0'<11> conf_vdl0'<12>
+                 + conf_vdl0'<13> conf_vdl0'<14> conf_vdl0'<15> conf_vdl0<0> conf_vdl0<1>
+                 + conf_vdl0<2> conf_vdl0<3> conf_vdl0<4> conf_vdl0<5> conf_vdl0<6> conf_vdl0<7>
+                 + conf_vdl0<8> conf_vdl0<9> conf_vdl0<10> conf_vdl0<11> conf_vdl0<12> conf_vdl0<13>
+                 + conf_vdl0<14> conf_vdl0<15> conf_vdl1'<0> conf_vdl1'<1> conf_vdl1'<2>
+                 + conf_vdl1'<3> conf_vdl1'<4> conf_vdl1'<5> conf_vdl1'<6> conf_vdl1'<7>
+                 + conf_vdl1'<8> conf_vdl1'<9> conf_vdl1'<10> conf_vdl1'<11> conf_vdl1'<12>
+                 + conf_vdl1'<13> conf_vdl1'<14> conf_vdl1'<15> conf_vdl1<0> conf_vdl1<1>
+                 + conf_vdl1<2> conf_vdl1<3> conf_vdl1<4> conf_vdl1<5> conf_vdl1<6> conf_vdl1<7>
+                 + conf_vdl1<8> conf_vdl1<9> conf_vdl1<10> conf_vdl1<11> conf_vdl1<12> conf_vdl1<13>
+                 + conf_vdl1<14> conf_vdl1<15> vdd vss
     Xi77 conf_clk conf_rofreq<1> conf_rofreq<2> net0200 conf_rst conf_rst' vdd vss dff_inv_c
     Xi75 conf_clk conf_rofreq<0> conf_rofreq<1> net12 conf_rst conf_rst' vdd vss dff_inv_c
     Xi74 conf_clk conf_roen conf_rofreq<0> net20 conf_rst conf_rst' vdd vss dff_inv_c
     Xi73 conf_clk conf_enhigh_vdl conf_roen net28 conf_rst conf_rst' vdd vss dff_inv_c
-    Xi72 conf_clk conf_rochoose<1> conf_enhigh_vdl conf_enhigh_vdl' conf_rst conf_rst' vdd vss dff_inv_c
+    Xi72 conf_clk conf_rochoose<1> conf_enhigh_vdl conf_enhigh_vdl' conf_rst conf_rst' vdd vss
+         + dff_inv_c
     Xi71 conf_clk conf_rochoose<0> conf_rochoose<1> net44 conf_rst conf_rst' vdd vss dff_inv_c
     Xi70 conf_clk conf_vdl1<15> conf_rochoose<0> net52 conf_rst conf_rst' vdd vss dff_inv_c
     Xi69 conf_clk conf_vdl1<14> conf_vdl1<15> conf_vdl1'<15> conf_rst conf_rst' vdd vss dff_inv_c
