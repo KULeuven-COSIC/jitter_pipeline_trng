@@ -27,10 +27,8 @@ P_MM: Tuple[float, float] = (0.0, 0.7e-3)
 E_MM: Tuple[float, float] = (1e-12, 2.75e-12)
 MIN_H = 0.91
 
-IID_RESULTS_FILE_NAME = ('/home/adriaan/Desktop/ASIC2021_0_backup_201123/'
-                         'Python/StatTests/TestResults/iidResults.txt')
-EXP_FOLDER = ('/home/adriaan/Desktop/ASIC2021_0_backup_201123/'
-              'Python/Experiments/RawData/')
+IID_RESULTS_FILE_NAME = join('measurements', 'stat_tests', 'iid_results.txt')
+EXP_FOLDER = join('measurements', 'm6')
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-v', help='Print process', action='store_true')
@@ -96,8 +94,8 @@ if args.d:
 
         # Collect pers for remaining confs:
         m6_conf_files = [f for f in listdir(EXP_FOLDER)
-                         if isfile(join(EXP_FOLDER, f)) & (f[1] == '6') & (f[4] == str(chip))]
-        m6_conf_files = [f for f in m6_conf_files if f.split('S')[1].split('_')[0] == '0.9']
+                         if isfile(join(EXP_FOLDER, f)) & (f[1] == '6') & (f[7] == str(chip))]
+        m6_conf_files = [f for f in m6_conf_files if f.split('sup')[1].split('_')[0] == '0.9']
         confs: List[Tuple[int, int, int, int]] = []
         pers: List[Tuple[float, float, float, float]] = []
         for f in m6_conf_files:
@@ -141,9 +139,9 @@ if args.d:
             for voltage in VOLTAGES:
                 m6_conf_files = [f for f in listdir(EXP_FOLDER)
                                  if isfile(join(EXP_FOLDER, f)) & (f[1] == '6') \
-                                    & (f[4] == str(chip))]
+                                    & (f[7] == str(chip))]
                 m6_conf_files = [f for f in m6_conf_files
-                                 if f.split('S')[1].split('_')[0] == str(voltage)]
+                                 if f.split('sup')[1].split('_')[0] == str(voltage)]
                 confs = []
                 pers = []
                 for f in m6_conf_files:

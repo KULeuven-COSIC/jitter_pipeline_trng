@@ -2,6 +2,10 @@
 
 This archive contains a hardware implementation of an oscillator jitter based pipelined True Random Number Generator (TRNG) design.
 
+## TODO
+
+Move measurement data so that the figures relying on this data can be generated.
+
 ## Archive Structure
 
 This archive contains the following folders:
@@ -13,5 +17,5 @@ This archive contains the following folders:
 
 ## Publication
 
-The data contained in this archive supports the following publications
+The data contained in this archive supports the following publication:
 - Adriaan Peetermans, and Ingrid Verbauwhede. **[An Energy and Area Efficient, All Digital Entropy Source Compatible with Modern Standards Based on Jitter Pipelining](https://tches.iacr.org/index.php/TCHES/article/view/9814)**. In: *IACR Transactions on Cryptographic Hardware and Embedded Systems (TCHES)*, vol. 2022, no. 4, pp. 88-109, 2022.

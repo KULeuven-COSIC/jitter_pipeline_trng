@@ -3,6 +3,7 @@ import argparse
 import sys
 import csv
 from os import getcwd
+from os.path import join
 from typing import List, Tuple, Union
 import numpy as np
 import matplotlib.pyplot as plt
@@ -15,8 +16,8 @@ Y_MM: Tuple[float, float] = (0.0, 0.011)
 THEO_JIT: List[float] = [10e3, 20e3, 30e3, 40e3, 50e3]
 SELECTED_JIT = 2
 CHIPS: List[int] = [0, 1, 2, 3, 4]
-EXP_FOLDER = '/home/adriaan/Desktop/ASIC2021_0_backup_201123/Python/Experiments/RawData/'
-SIM_FOLDER = '/home/adriaan/Desktop/ASIC2021_0_backup_201123/Python/Simulation/SimData/'
+EXP_FOLDER = join('measurements', 'm5')
+SIM_FOLDER = join('math_model', 'simulation_data', 'm5')
 
 def get_t0_var(r_var_: float, n_: int, t0_per_: float,
                sim_var_: List[float], sim_noise_: List[float]) -> float:
@@ -58,8 +59,8 @@ if args.d:
     chips = CHIPS
     data_to_write: List[List[float]] = []
     for chip in chips:
-        exp_file_name = EXP_FOLDER + f'm5_C{chip}.csv'
-        sim_file_name = SIM_FOLDER + f'm5_C{chip}.csv'
+        exp_file_name = join(EXP_FOLDER, f'm5_chip{chip:d}.csv')
+        sim_file_name = join(SIM_FOLDER, f'm5_chip{chip:d}.csv')
 
         # Read out experimental results:
         per_dc_0_exps: List[float] = []

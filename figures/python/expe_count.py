@@ -3,6 +3,7 @@ import argparse
 import sys
 import csv
 from os import getcwd
+from os.path import join
 from typing import List, Tuple, cast
 import numpy as np
 import matplotlib.pyplot as plt
@@ -17,7 +18,7 @@ SUP: float = 0.9
 COR_LAGS = cast(List[int], list(range(1,1025)))
 L_MM: Tuple[float, float] = (min(COR_LAGS)-1, max(COR_LAGS))
 C_MM: Tuple[float, float] = (-0.1, 0.1)
-RAW_DATA_FOLDER = '/home/adriaan/Desktop/ASIC2021_0_backup_201123/Python/Experiments/RawData/'
+RAW_DATA_FOLDER = join('measurements', 'm7')
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-v', help='Print process', action='store_true')
@@ -31,8 +32,9 @@ ys: List[float] = []
 store_data = s_d.StoreData(name='expe_count')
 
 if args.d:
-    cnt_file_name = RAW_DATA_FOLDER + (f'RawCnts/m7_C{CHIP}_T{TEMP}_S{SUP}_'
-                                       f'CONF{CONF[0]}-{CONF[1]}-{CONF[2]}-{CONF[3]}.csv')
+    cnt_file_name = join(RAW_DATA_FOLDER,
+                         f'm7_chip{CHIP:d}_temp{TEMP:d}_sup{SUP:3.1f}_'
+                         f'conf{CONF[0]:d}-{CONF[1]:d}-{CONF[2]:d}-{CONF[3]:d}.csv')
     cnts: List[int] = []
     with open(cnt_file_name, 'r', encoding='utf-8') as csv_file:
         reader = csv.reader(csv_file, delimiter=',')

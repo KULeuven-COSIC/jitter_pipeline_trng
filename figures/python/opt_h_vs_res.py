@@ -3,6 +3,7 @@ import argparse
 import sys
 import csv
 from os import getcwd
+from os.path import join
 from typing import List, Tuple, Optional
 import numpy as np
 import matplotlib.pyplot as plt
@@ -16,8 +17,7 @@ CHOSEN_ALPHA = 1.94
 F_NOISE = 30.0
 H_TARGET = 0.997
 
-file_name = ('/home/adriaan/Desktop/ASIC2021_0_backup_201123/Python/Simulation/'
-             f'SimData/mx_Cx_hvsres_{int(F_NOISE)}.csv')
+file_name = join('math_model', 'simulation_data', f'h_vs_res_fnoise{int(F_NOISE):d}.csv')
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-v', help='Print process', action='store_true')

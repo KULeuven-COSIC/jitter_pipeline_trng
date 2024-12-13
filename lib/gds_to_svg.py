@@ -167,11 +167,11 @@ class GdsToSvg:
     def _init_merged_svg(self, viewbox: Dict[str, int]) -> et.Element:
         """Initialize the merged SVG."""
         merged_attr: Dict[str, str] = {
-            'width': f'{viewbox['max_x'] - viewbox['min_x']:d}',
-            'height': f'{viewbox['max_y'] - viewbox['min_y']:d}',
-            'viewBox': (f'{viewbox['min_x']:d} {viewbox['min_y']:d} '
-                        f'{viewbox['max_x'] - viewbox['min_x']:d} '
-                        f'{viewbox['max_y'] - viewbox['min_y']:d}'),
+            'width': f'{viewbox["max_x"] - viewbox["min_x"]:d}',
+            'height': f'{viewbox["max_y"] - viewbox["min_y"]:d}',
+            'viewBox': (f'{viewbox["min_x"]:d} {viewbox["min_y"]:d} '
+                        f'{viewbox["max_x"] - viewbox["min_x"]:d} '
+                        f'{viewbox["max_y"] - viewbox["min_y"]:d}'),
             'xmlns': self._SVG_NS,
             'xmlns:xlink': self._SVG_LINK
         }
