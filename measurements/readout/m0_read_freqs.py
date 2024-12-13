@@ -1,4 +1,4 @@
-"""Read all ro frequencies."""
+"""Read all RO frequencies."""
 import sys
 from os import getcwd
 from os.path import join
